@@ -1,7 +1,9 @@
 package hello.springmvc.basic.request;
 
+import hello.springmvc.basic.HelloData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -79,6 +81,13 @@ public class RequestParamController {
     public String requestParamMap(@RequestParam Map<String, Object> param){
 
         log.info("username={}, age={}", param.get("username"), param.get("age"));
+        return "ok";
+    }
+
+    @ResponseBody
+    @RequestMapping("/model-attribute-v1")   //@ModelAttribute 생략 가능
+    public String ModelAttributeV1(@ModelAttribute HelloData helloData){
+        log.info("helloDaga = {}", helloData);
         return "ok";
     }
 }
